@@ -7,6 +7,7 @@ public class main {
 
         part1 nb2 = new part1(5);
         nb2.initialiser1();
+
         //System.out.println(nb2.afficher());
 
         //System.out.println(part1.comparer(nb1.getArray(), nb2.getArray()));
