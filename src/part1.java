@@ -12,15 +12,22 @@ public class part1 {
         return array;
     }
 
-    // prend un nombre, rajoute les 0 selon la taille allouée
-    // et l'injecte dans notre array.
+    // prend un nombre, le transforme en binaire, ajoute les 0
+    // selon la taille alloué et l'injecte dans le tableau.
     public void convert (int nb) {
         String s = Integer.toBinaryString(nb);
+
+        if (s.length() > array.length) {
+            throw new IllegalArgumentException("augmenter taille tableau");
+        }
+
         String size = "%" + array.length + "s";
         s = String.format(size, s).replaceAll(" ", "0");
+
         StringBuilder sb = new StringBuilder(s);
         sb.reverse();
         s = sb.toString();
+
         char[] cArray =  s.toCharArray();
         for (int i=0; i<array.length; i++) {
             if (cArray[i] == '0') {
@@ -112,5 +119,39 @@ public class part1 {
         for (int i=0; i<array.length-1; i++) {
             array[i] = array[i+1];
         }
+    }
+
+    public void reduireDe1 () {
+        if (!estPair()) {
+            array[0] = 0;
+        } else {
+            for (int i=0; i<array.length; i++) {
+                if (array[i] == 0) {
+                    array[i] = 1;
+                } else {
+                    array[i] = 0;
+                    break;
+                }
+            }
+        }
+    }
+
+    public void multiplierPar2 () {
+
+        if (array[array.length-1] == 1) {
+            throw new IllegalArgumentException("augmenter taille tableau");
+        }
+
+        for (int i=array.length-1; i>0; i--) {
+            array[i] = array[i-1];
+        }
+        array[0] = 0;
+    }
+
+    public static String ajouter(int[] array1, int[] array2) {
+
+
+
+        return "caca";
     }
 }
