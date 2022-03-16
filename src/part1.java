@@ -55,13 +55,20 @@ public class part1 {
         array = null;
     }
 
-    public String afficher () {
+    public void afficher () {
         String s = "";
         for (int i=array.length-1; i>=0; i--) {
             s += String.valueOf(array[i]);
         }
+        System.out.println(s);
+    }
 
-        return s;
+    public static void afficher (int[] arr) {
+        String s = "";
+        for (int i=arr.length-1; i>=0; i--) {
+            s += String.valueOf(arr[i]);
+        }
+        System.out.println(s);
     }
 
     public static boolean comparer (int[] array1, int[] array2) {
@@ -148,10 +155,102 @@ public class part1 {
         array[0] = 0;
     }
 
-    public static String ajouter(int[] array1, int[] array2) {
+    public static int[] ajouter(int[] array1, int[] array2) {
+
+        int[] newArr;
+
+        if (array1.length > array2.length) {
+            newArr = new int [array1.length];
+            for (int i=0; i< array2.length; i++) {
+                newArr[i] = array2[i];
+            }
+            for (int i= array2.length; i< array1.length; i++) {
+                newArr[i] = 0;
+            }
+
+            if (array1.length == newArr.length) {
+                return ajouter_calcul(array1, newArr);
+            } else {
+                throw new IllegalArgumentException("problème taille");
+            }
+        }
+
+        else if (array2.length > array1.length) {
+            newArr = new int [array2.length];
+            for (int i=0; i< array1.length; i++) {
+                newArr[i] = array1[i];
+            }
+            for (int i= array1.length; i< array2.length; i++) {
+                newArr[i] = 0;
+            }
+
+            if (array2.length == newArr.length) {
+                return ajouter_calcul(array2, newArr);
+            } else {
+                throw new IllegalArgumentException("problème taille");
+            }
+        }
+
+        else {
+            if (array1.length == array2.length) {
+                return ajouter_calcul(array1, array2);
+            } else {
+                throw new IllegalArgumentException("problème taille");
+            }
+        }
+    }
+
+    private static int[] ajouter_calcul(int[] array1, int[] array2) {
+
+        String s = "";
+        int temp = 0;
+
+        for (int i=0; i< array1.length; i++) {
+
+            if (array1[i] + array2[i] == 0) {
+                if (temp == 0) {
+                    s += 0;
+                } else {
+                    s += 1;
+                    temp = 0;
+                }
+            }
+            else if (array1[i] + array2[i] == 1) {
+                if (temp == 0) {
+                    s += 1;
+                } else {
+                    s += 0;
+                    temp = 1;
+                }
+            }
+            else if (array1[i] + array2[i] == 2) {
+                if (temp == 0) {
+                    s += 0;
+                    temp = 1;
+                } else {
+                    s += 1;
+                    temp = 1;
+                }
+            }
+        }
+
+        int[] finalArr = new int[s.length()];
+        char[] cArray =  s.toCharArray();
+        for (int i=0; i<finalArr.length; i++) {
+            if (cArray[i] == '0') {
+                finalArr[i] = 0;
+            } else {
+                finalArr[i] = 1;
+            }
+        }
+
+        return finalArr;
+    }
+
+    public static int[] multiplier(int[] array1, int[] array2) {
 
 
 
-        return "caca";
+        return null;
     }
 }
