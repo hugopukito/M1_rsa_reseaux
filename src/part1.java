@@ -155,6 +155,20 @@ public class part1 {
         array[0] = 0;
     }
 
+    public static int[] multiplierPar2 (int[] array) {
+
+        if (array[array.length-1] == 1) {
+            throw new IllegalArgumentException("augmenter taille tableau");
+        }
+
+        for (int i=array.length-1; i>0; i--) {
+            array[i] = array[i-1];
+        }
+        array[0] = 0;
+
+        return array;
+    }
+
     public static int[] ajouter(int[] array1, int[] array2) {
 
         int[] newArr;
@@ -248,6 +262,34 @@ public class part1 {
     }
 
     public static int[] multiplier(int[] array1, int[] array2) {
+
+        int[] result = new int[array1.length*array1.length];
+        result[0] = 0;
+
+        int[] temp = new int[array1.length*2];
+
+        for (int i=0; i<array2.length; i++) {
+
+            for (int k=0; k< temp.length; k++) {
+                temp[k] = 0;
+            }
+
+            for (int k=0; k< array1.length; k++) {
+                temp[k] = array1[k];
+            }
+
+            if (array2[i] == 1) {
+                for (int j=0; j<i; j++) {
+                    temp = multiplierPar2(temp);
+                }
+                result = ajouter(result, temp);
+            }
+        }
+
+        return result;
+    }
+
+    public static int[] exponentiationRapideSansModulo (int[] array1, int[] array2) {
 
 
 
