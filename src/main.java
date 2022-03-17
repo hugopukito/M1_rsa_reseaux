@@ -14,10 +14,10 @@ public class main {
 
         //System.out.println(nb1.estPair());
 
-        nb1.convert(104);
-        nb2.convert(94);
-        nb1.afficher();
-        nb2.afficher();
+        nb1.convert(123);
+        nb2.convert(13);
+        /*nb1.afficher();
+        nb2.afficher();*/
 
         //nb2.diviserPar2();
 

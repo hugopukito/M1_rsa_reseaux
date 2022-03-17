@@ -411,8 +411,52 @@ public class part1 {
 
     public static int[] modulo(int[] array1, int[] array2) {
 
+        int[] arr1 = real_length(array1);
+        int[] arr2 = real_length(array2);
+        int diff;
+        int arr1_diff;
 
+        while (arr1.length >= arr2.length) {
+            arr1 = real_length(arr1);
+            diff = arr1.length - arr2.length;
+            int[] sub = new int[arr1.length];
 
-        return array1;
+            for (int i=0; i<arr2.length; i++) {
+                sub[i] = arr2[i];
+            }
+
+            arr1_diff = arr1.length-1;
+
+            for (int i=0; i<diff-1; i++) {
+                sub = multiplierPar2(sub);
+            }
+
+            while (arr1.length > arr1_diff) {
+                arr1 = real_length(soustraire(arr1, sub));
+            }
+        }
+
+        return arr1;
+    }
+
+    private static int[] real_length(int[] array) {
+
+        int cpt = 0;
+
+        for (int i= array.length-1; i>=0; i--) {
+            if (array[i] != 0) {
+                break;
+            }
+            cpt++;
+        }
+
+        cpt = array.length - cpt;
+        int[] arr = new int[cpt];
+
+        for (int i=0; i<cpt; i++) {
+            arr[i] = array[i];
+        }
+
+        return arr;
     }
 }
