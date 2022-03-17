@@ -263,7 +263,14 @@ public class part1 {
 
     public static int[] multiplier(int[] array1, int[] array2) {
 
-        int[] result = new int[array1.length*array1.length];
+        int[] result;
+
+        if (array1.length > array2.length) {
+            result = new int[array1.length*2];
+        } else {
+            result = new int[array2.length*2];
+        }
+
         result[0] = 0;
 
         int[] temp = new int[array1.length*2];
@@ -289,10 +296,123 @@ public class part1 {
         return result;
     }
 
+    // régler la mémoire
     public static int[] exponentiationRapideSansModulo (int[] array1, int[] array2) {
 
+        int[] x = new int[(int) Math.pow(array1.length,2)];
+        int[] base = new int[(int) Math.pow(array1.length,2)];
+
+        x[0] = 1;
+        for (int i=0; i< array1.length; i++) {
+            base[i] = array1[i];
+        }
+
+        for (int i=0; i< array2.length; i++) {
+            if (array2[i] == 1) {
+                x = multiplier(x, base);
+            }
+            base = multiplier(base, base);
+        }
+
+        return x;
+    }
+
+    public static int[] soustraire(int[] array1, int[] array2) {
+
+        int[] newArr;
+
+        if (array1.length > array2.length) {
+            newArr = new int [array1.length];
+            for (int i=0; i< array2.length; i++) {
+                newArr[i] = array2[i];
+            }
+            for (int i= array2.length; i< array1.length; i++) {
+                newArr[i] = 0;
+            }
+
+            if (array1.length == newArr.length) {
+                return soustraire_calcul(array1, newArr);
+            } else {
+                throw new IllegalArgumentException("problème taille");
+            }
+        }
+
+        else if (array2.length > array1.length) {
+            newArr = new int [array2.length];
+            for (int i=0; i< array1.length; i++) {
+                newArr[i] = array1[i];
+            }
+            for (int i= array1.length; i< array2.length; i++) {
+                newArr[i] = 0;
+            }
+
+            if (array2.length == newArr.length) {
+                return soustraire_calcul(array2, newArr);
+            } else {
+                throw new IllegalArgumentException("problème taille");
+            }
+        }
+
+        else {
+            if (array1.length == array2.length) {
+                return soustraire_calcul(array1, array2);
+            } else {
+                throw new IllegalArgumentException("problème taille");
+            }
+        }
+    }
+
+    private static int[] soustraire_calcul(int[] array1, int[] array2) {
+
+        String s = "";
+        int temp = 0;
+
+        for (int i=0; i< array1.length; i++) {
+
+            if (array1[i] - array2[i] == 0) {
+                if (temp == 0) {
+                    s += 0;
+                } else {
+                    s += 1;
+                    temp = 1;
+                }
+            }
+            else if (array1[i] - array2[i] == -1) {
+                if (temp == 0) {
+                    s += 1;
+                    temp = 1;
+                } else {
+                    s += 0;
+                    temp = 1;
+                }
+            }
+            else if (array1[i] - array2[i] == 1) {
+                if (temp == 0) {
+                    s += 1;
+                } else {
+                    s += 0;
+                    temp = 0;
+                }
+            }
+        }
+
+        int[] finalArr = new int[s.length()];
+        char[] cArray =  s.toCharArray();
+        for (int i=0; i<finalArr.length; i++) {
+            if (cArray[i] == '0') {
+                finalArr[i] = 0;
+            } else {
+                finalArr[i] = 1;
+            }
+        }
+
+        return finalArr;
+    }
+
+    public static int[] modulo(int[] array1, int[] array2) {
 
 
-        return null;
+
+        return array1;
     }
 }
