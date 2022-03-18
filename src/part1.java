@@ -44,11 +44,28 @@ public class part1 {
         }
     }
 
+    public static int[] initialiser0 (int[] array) {
+        for (int i=0; i<array.length; i++) {
+            array[i] = 0;
+        }
+
+        return array;
+    }
+
     public void initialiser1 () {
         array[0] = 1;
         for (int i=1; i<array.length; i++) {
             array[i] = 0;
         }
+    }
+
+    public static int[] initialiser1 (int[] array) {
+        array[0] = 1;
+        for (int i=1; i<array.length; i++) {
+            array[i] = 0;
+        }
+
+        return array;
     }
 
     public void libererNombre () {
@@ -416,7 +433,7 @@ public class part1 {
         int diff;
         int arr1_diff;
 
-        while (arr1.length >= arr2.length) {
+        while (arr1.length > arr2.length) {
             arr1 = real_length(arr1);
             diff = arr1.length - arr2.length;
             int[] sub = new int[arr1.length];
@@ -458,5 +475,71 @@ public class part1 {
         }
 
         return arr;
+    }
+
+    public static int[] exponentiationRapide(int[] base, int[] exp, int[] m) {
+
+        /*int[] result = new int[m.length];
+
+        initialiser1(result);
+
+        while (!egale0(exp)) {
+            if (!egale0(ET1(exp))) {
+                result = modulo(multiplier(result, base), m);
+            }
+            exp = decalageDroite(exp);
+            base = modulo(multiplier(base, base), m);
+        }
+
+        return result;*/
+
+        int[] c =  new int[m.length];
+        int[] e2 = new int[exp.length];
+        int[] Un = new int[1];
+
+        c = initialiser1(c);
+        e2 = initialiser1(e2);
+        Un = initialiser1(Un);
+
+        while (!comparer(exp, e2)) {
+            c = modulo(multiplier(base, c), m);
+            e2 = ajouter(e2, Un);
+        }
+
+        c = modulo(multiplier(base, c), m);
+
+        return c;
+    }
+
+    public static int[] decalageDroite(int[] array) {
+        for (int i=0; i< array.length-1; i++) {
+            array[i] = array[i+1];
+        }
+
+        array[array.length-1] = 0;
+
+        return array;
+    }
+
+    private static int[] ET1(int[] array) {
+
+        if (array[0] != 1) {
+            array[0] = 0;
+        }
+
+        for (int i=1; i< array.length; i++) {
+            array[i] = 0;
+        }
+
+        return array;
+    }
+
+    private static boolean egale0(int[] array) {
+        for (int i=0; i< array.length; i++) {
+            if (array[i] == 1) {
+                return false;
+            }
+        }
+        return true;
     }
 }
