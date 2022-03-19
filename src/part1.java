@@ -438,7 +438,33 @@ public class part1 {
         int diff;
         int arr1_diff;
 
-        while (arr1.length > arr2.length) {
+        if (arr1.length < arr2.length) {
+            for (int i=0; i<arr1.length; i++) {
+                finalArray[i] = arr1[i];
+            }
+            for (int i=arr1.length; i< finalArray.length; i++) {
+                finalArray[i] = 0;
+            }
+
+            return finalArray;
+        }
+        else if (arr1.length == arr2.length) {
+            if(inferieur(arr1, arr2)) {
+                for (int i=0; i<arr1.length; i++) {
+                    finalArray[i] = arr1[i];
+                }
+                for (int i=arr1.length; i< finalArray.length; i++) {
+                    finalArray[i] = 0;
+                }
+
+                return finalArray;
+            }
+        }
+        else if (comparer(arr1, arr2)) {
+            return arr2;
+        }
+
+        do {
             arr1 = real_length(arr1);
             diff = arr1.length - arr2.length;
             int[] sub = new int[arr1.length];
@@ -456,7 +482,7 @@ public class part1 {
             while (arr1.length > arr1_diff) {
                 arr1 = real_length(soustraire(arr1, sub));
             }
-        }
+        } while (arr1.length > arr2.length);
 
         for (int i=0; i<arr1.length; i++) {
             finalArray[i] = arr1[i];
@@ -466,6 +492,18 @@ public class part1 {
         }
 
         return finalArray;
+    }
+
+    private static boolean inferieur(int[] arr1, int[] arr2) {
+        for (int i=arr1.length-1; i>=0; i--) {
+            if (arr1[i] == 1 && arr2[i] != 1) {
+                return false;
+            }
+            else if (arr1[i] != 1 && arr2[i] == 1) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static int[] real_length(int[] array) {
@@ -499,6 +537,7 @@ public class part1 {
             if (!estPair(exp)) {
                 result = modulo(multiplier(result, base), m);
             }
+
             exp = decalageDroite(exp);
             base = modulo(multiplier(base, base), m);
         }
