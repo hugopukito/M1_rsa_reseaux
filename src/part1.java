@@ -139,6 +139,10 @@ public class part1 {
          return array[0] == 0;
     }
 
+    public static boolean estPair (int[] arr) {
+        return arr[0] == 0;
+    }
+
     public void diviserPar2 () {
         for (int i=0; i<array.length-1; i++) {
             array[i] = array[i+1];
@@ -428,6 +432,7 @@ public class part1 {
 
     public static int[] modulo(int[] array1, int[] array2) {
 
+        int[] finalArray = new int[array2.length];
         int[] arr1 = real_length(array1);
         int[] arr2 = real_length(array2);
         int diff;
@@ -453,7 +458,14 @@ public class part1 {
             }
         }
 
-        return arr1;
+        for (int i=0; i<arr1.length; i++) {
+            finalArray[i] = arr1[i];
+        }
+        for (int i=arr1.length; i< finalArray.length; i++) {
+            finalArray[i] = 0;
+        }
+
+        return finalArray;
     }
 
     private static int[] real_length(int[] array) {
@@ -477,21 +489,24 @@ public class part1 {
         return arr;
     }
 
-    public static int[] exponentiationRapide(int[] base, int[] exp, int[] m) {
+    public static int[] exponentiationRapide1(int[] base, int[] exp, int[] m) {
 
-        /*int[] result = new int[m.length];
+        int[] result = new int[m.length];
 
         initialiser1(result);
 
         while (!egale0(exp)) {
-            if (!egale0(ET1(exp))) {
+            if (!estPair(exp)) {
                 result = modulo(multiplier(result, base), m);
             }
             exp = decalageDroite(exp);
             base = modulo(multiplier(base, base), m);
         }
 
-        return result;*/
+        return result;
+    }
+
+    public static int[] exponentiationRapide2(int[] base, int[] exp, int[] m) {
 
         int[] c =  new int[m.length];
         int[] e2 = new int[exp.length];
@@ -517,19 +532,6 @@ public class part1 {
         }
 
         array[array.length-1] = 0;
-
-        return array;
-    }
-
-    private static int[] ET1(int[] array) {
-
-        if (array[0] != 1) {
-            array[0] = 0;
-        }
-
-        for (int i=1; i< array.length; i++) {
-            array[i] = 0;
-        }
 
         return array;
     }

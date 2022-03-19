@@ -5,8 +5,8 @@ public class main {
         //nb1.initialiser1();
         //System.out.println(nb1.afficher());
 
-        part1 nb2 = new part1(9);
-        part1 nb3 = new part1(9);
+        part1 nb2 = new part1(11);
+        part1 nb3 = new part1(11);
         nb2.initialiser1();
 
         //System.out.println(nb2.afficher());
@@ -16,10 +16,8 @@ public class main {
         //System.out.println(nb1.estPair());
 
         nb1.convert(4);
-        nb2.convert(13);
-        nb3.convert(497);
-        /*nb1.afficher();
-        nb2.afficher();*/
+        nb2.convert(550);
+        nb3.convert(490);
 
         //nb2.diviserPar2();
 
@@ -34,7 +32,7 @@ public class main {
         //part1.afficher(part1.multiplier(nb1.getArray(), nb2.getArray()));
         //part1.afficher(part1.exponentiationRapideSansModulo(nb1.getArray(), nb2.getArray()));
         //part1.afficher(part1.soustraire(nb1.getArray(), nb2.getArray()));
-        //part1.afficher(part1.modulo(nb1.getArray(), nb2.getArray()));
-        part1.afficher(part1.exponentiationRapide(nb1.getArray(), nb2.getArray(), nb3.getArray()));
+        part1.afficher(part1.modulo(nb2.getArray(), nb3.getArray()));
+        //part1.afficher(part1.exponentiationRapide1(nb1.getArray(), nb2.getArray(), nb3.getArray()));
     }
 }
