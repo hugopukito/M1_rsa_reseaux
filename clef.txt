@@ -1,0 +1,15 @@
+56 bits:
+
+clef publique (e,n):
+(10001, 516581fd925fc7)
+
+clef privée (d,n):
+(28640fa15930b9, 516581fd925fc7)
+
+128 bits:
+
+clef publique (e,n):
+(10001, 72d7c05d65d7cf7558a78a0d1559388f)
+
+clef privée (d,n):
+(2b2a4f028bfa0edea276fda926db1759, 72d7c05d65d7cf7558a78a0d1559388f)

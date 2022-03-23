@@ -33,6 +33,6 @@ public class main {
         //part1.afficher(part1.exponentiationRapideSansModulo(nb1.getArray(), nb2.getArray()));
         //part1.afficher(part1.soustraire(nb1.getArray(), nb2.getArray()));
         //part1.afficher(part1.modulo(nb2.getArray(), nb3.getArray()));
-        part1.afficher(part1.exponentiationRapide1(nb1.getArray(), nb2.getArray(), nb3.getArray()));
+        //part1.afficher(part1.exponentiationRapide1(nb1.getArray(), nb2.getArray(), nb3.getArray()));
     }
 }
