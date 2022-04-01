@@ -25,8 +25,8 @@ public class main {
 
         //nb2.multiplierPar2();
 
-        /*nb1.afficher();
-        part1.afficher(part1.decalageDroite(nb1.getArray()));*/
+        //nb1.afficher();
+        //part1.afficher(part1.decalageDroite(nb1.getArray()));
 
         //part1.afficher(part1.ajouter(nb1.getArray(), nb2.getArray()));
         //part1.afficher(part1.multiplier(nb1.getArray(), nb2.getArray()));
@@ -34,5 +34,10 @@ public class main {
         //part1.afficher(part1.soustraire(nb1.getArray(), nb2.getArray()));
         //part1.afficher(part1.modulo(nb2.getArray(), nb3.getArray()));
         //part1.afficher(part1.exponentiationRapide1(nb1.getArray(), nb2.getArray(), nb3.getArray()));
+
+        part2 cacao = new part2("cacao", 128, 65537, "11101010111100110000110000111010111011010101011110100" +
+                "01101101011101100001110110000000000111001000110010100010011100111010010001");
+        cacao.affichage();
+        part1.afficher(cacao.exponRapide());
     }
 }

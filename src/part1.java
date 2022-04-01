@@ -38,6 +38,23 @@ public class part1 {
         }
     }
 
+    public void convert (String s) {
+
+        StringBuilder sb = new StringBuilder(s);
+        sb.reverse();
+        s = sb.toString();
+
+        char[] cArray =  s.toCharArray();
+
+        for (int i = 0; i<cArray.length; i++) {
+            if (cArray[i] == '0') {
+                array[i] = 0;
+            } else {
+                array[i] = 1;
+            }
+        }
+    }
+
     public void initialiser0 () {
         for (int i=0; i<array.length; i++) {
             array[i] = 0;
@@ -72,12 +89,23 @@ public class part1 {
         array = null;
     }
 
-    public void afficher () {
+    public String afficher () {
         String s = "";
         for (int i=array.length-1; i>=0; i--) {
             s += String.valueOf(array[i]);
         }
         System.out.println(s);
+
+        return s;
+    }
+
+    public String getAfficher () {
+        String s = "";
+        for (int i=array.length-1; i>=0; i--) {
+            s += String.valueOf(array[i]);
+        }
+
+        return s;
     }
 
     public static void afficher (int[] arr) {
